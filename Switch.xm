@@ -1,3 +1,5 @@
+#import <libsw/sluthwareios/SWUIAlertView.h>
+
 #import "FSSwitchDataSource.h"
 #import "FSSwitchPanel.h"
 
@@ -5,8 +7,6 @@
 
 #import "AirTrafficSettingsDataSource.h"
 #import "AirTrafficSettingsDataSourceDelegate.h"
-
-#import <Preferences/Preferences.h>
 
 #define MAX_SYNC_ATTEMPTS 6
 
@@ -26,9 +26,19 @@
 - (id)init
 {
     self = [super init];
-
+    
     if (self){
         [self killAttempToSyncTimer:NO];
+        AirTrafficSettingsDataSource *controller = [self airTrafficSettingsDataSource];
+        
+        if (controller){
+            [controller setDelegate:self];
+            [controller scanWakeableLibraries];
+            
+            for (id identifier in [controller hostIdentifiers]){
+                [controller registerForProgressWithLibraryIdentifier:identifier];
+            }
+        }
     }
     
     return self;
@@ -45,8 +55,8 @@
             return FSSwitchStateOn;
         }
     }
-
-	return FSSwitchStateOff;
+    
+    return FSSwitchStateOff;
 }
 
 - (void)applyState:(FSSwitchState)newState forSwitchIdentifier:(NSString *)switchIdentifier
@@ -54,29 +64,29 @@
     AirTrafficSettingsDataSource *controller = [self airTrafficSettingsDataSource];
     
     if (controller){
-
+        
         [controller scanWakeableLibraries];
         
         //handle new state
         if (newState == FSSwitchStateOff){
-        
+            
             [controller unregisterForProgress];
             [controller cancelSync];
-
+            
             [self killAttempToSyncTimer:NO];
-
+            
         } else if (newState == FSSwitchStateOn){
-
+            
             if (![controller syncing]){
                 if (!self.attemptToSyncTimer){
                     self.attemptToSyncTimer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                 target:self
-                                               selector:@selector(attemptToSync)
-                                               userInfo:nil
-                                                repeats:YES];
+                                                                               target:self
+                                                                             selector:@selector(attemptToSync)
+                                                                             userInfo:nil
+                                                                              repeats:YES];
                 }
             }
-
+            
         }
     }
 }
@@ -89,23 +99,23 @@
     self.syncAttempts++;
     
     if (self.syncAttempts >= MAX_SYNC_ATTEMPTS){
-    
+        
         [controller unregisterForProgress];
         [controller cancelSync];
-
+        
         [self killAttempToSyncTimer:YES];
         
         [[FSSwitchPanel sharedPanel] stateDidChangeForSwitchIdentifier:[NSBundle bundleForClass:[self class]].bundleIdentifier];
-
+        
         return;
     }
-
+    
     if (controller){
         if ([controller syncing]){
             [self killAttempToSyncTimer:NO];
         } else {
             if (controller){
-
+                
                 for (id identifier in [controller hostIdentifiers]){
                     [controller registerForProgressWithLibraryIdentifier:identifier];
                     [controller requestSync];
@@ -124,29 +134,30 @@
     if (self.attemptToSyncTimer){
         [self.attemptToSyncTimer invalidate];
     }
-       
+    
     self.attemptToSyncTimer = nil;
     
     [[FSSwitchPanel sharedPanel] stateDidChangeForSwitchIdentifier:[NSBundle bundleForClass:[self class]].bundleIdentifier];
     
     if (showMessage){
-        [[[UIAlertView alloc] initWithTitle:@"Couldn't Sync"
-                                message:@"There was a problem trying to sync to iTunes. Please ensure you are connected to your iTunes library"
-                               delegate:self
-                      cancelButtonTitle:@"Ok"
-                      otherButtonTitles:nil, nil] show];
+        
+        [[[SWUIAlertView alloc] initWithTitle:@"Couldn't Sync"
+                                      message:@"Please ensure you are connected to your iTunes library"
+                                   completion:^(UIAlertView *alert, NSInteger buttonIndex){
+                                   } cancelButtonTitle:@"Ok"
+                            otherButtonTitles:nil, nil] show];
     }
 }
 
 - (AirTrafficSettingsDataSource *)airTrafficSettingsDataSource
 {
-    dlopen("/System/Library/PreferenceBundles/AirTrafficSettings.bundle/AirTrafficSettings", RTLD_LAZY);
+    dlopen("/System/Library/PreferenceBundles/AirTrafficSettings.bundle/AirTrafficSettings", RTLD_NOW);
     
     AirTrafficSettingsDataSource *controller = [%c(AirTrafficSettingsDataSource) sharedDataSource];
-	
-	if (!controller){
-		controller = [[%c(AirTrafficSettingsDataSource) alloc] init];
-	}
+    
+    if (!controller){
+        controller = [[%c(AirTrafficSettingsDataSource) alloc] init];
+    }
     
     [controller setDelegate:self];
     
@@ -171,17 +182,6 @@
 }
 
 @end
-
-%hook iTunesSyncSwitch
-
-- (id)init
-{
-    NSLog(@"PAT WAS HERE");
-
-    return %orig();
-}
-
-%end
 
 %ctor
 {

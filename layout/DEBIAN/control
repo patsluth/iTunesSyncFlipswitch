@@ -1,6 +1,6 @@
 Package: com.patsluth.switunessyncflipswitch
 Name: iTunes Sync Flipswitch
-Depends: mobilesubstrate, com.a3tweaks.flipswitch
+Depends: mobilesubstrate, com.a3tweaks.flipswitch, com.patsluth.libsw
 Version: 1.0
 Architecture: iphoneos-arm
 Description: Switch for iTunes Wi-Fi sync found in Settngs/General/iTunes Wi-Fi Sync
