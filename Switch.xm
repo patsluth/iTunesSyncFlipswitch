@@ -1,4 +1,4 @@
-#import <libsw/sluthwareios/SWUIAlertView.h>
+#import <libsw/sluthwareios/sluthwareios.h>
 
 #import "FSSwitchDataSource.h"
 #import "FSSwitchPanel.h"
@@ -143,9 +143,9 @@
         
         [[[SWUIAlertView alloc] initWithTitle:@"Couldn't Sync"
                                       message:@"Please ensure you are connected to your iTunes library"
-                                   completion:^(UIAlertView *alert, NSInteger buttonIndex){
-                                   } cancelButtonTitle:@"Ok"
-                            otherButtonTitles:nil, nil] show];
+                           clickedButtonBlock:nil
+                              didDismissBlock:nil
+                            cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
     }
 }
 
