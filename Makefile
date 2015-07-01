@@ -25,5 +25,4 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 include $(THEOS_MAKE_PATH)/bundle.mk
 include $(THEOS_MAKE_PATH)/library.mk
 
-after-install::
-	@install.exec "killall -9 SpringBoard"
+after-install:: @install.exec "killall -9 SpringBoard"
