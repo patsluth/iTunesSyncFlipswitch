@@ -1,0 +1,84 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		2ED32C921BE930B70052D7C8 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		2ED32C931BE930B70052D7C8 /* final_release_debs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = final_release_debs; sourceTree = "<group>"; };
+		2ED32C941BE930B70052D7C8 /* layout */ = {isa = PBXFileReference; lastKnownFileType = folder; path = layout; sourceTree = "<group>"; };
+		2ED32C951BE930B70052D7C8 /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
+		2ED32C961BE930B70052D7C8 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		2ED32C981BE930B70052D7C8 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		2ED32C991BE930B70052D7C8 /* iTunesSyncSwitch.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = iTunesSyncSwitch.xm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2ED32C8B1BE9302A0052D7C8 = {
+			isa = PBXGroup;
+			children = (
+				2ED32C921BE930B70052D7C8 /* Assets */,
+				2ED32C931BE930B70052D7C8 /* final_release_debs */,
+				2ED32C941BE930B70052D7C8 /* layout */,
+				2ED32C981BE930B70052D7C8 /* Makefile */,
+				2ED32C951BE930B70052D7C8 /* public */,
+				2ED32C961BE930B70052D7C8 /* Resources */,
+				2ED32C991BE930B70052D7C8 /* iTunesSyncSwitch.xm */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		2ED32C8C1BE9302A0052D7C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+			};
+			buildConfigurationList = 2ED32C8F1BE9302A0052D7C8 /* Build configuration list for PBXProject "iTunesSyncFlipswitch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2ED32C8B1BE9302A0052D7C8;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		2ED32C901BE9302A0052D7C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		2ED32C911BE9302A0052D7C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2ED32C8F1BE9302A0052D7C8 /* Build configuration list for PBXProject "iTunesSyncFlipswitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2ED32C901BE9302A0052D7C8 /* Debug */,
+				2ED32C911BE9302A0052D7C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2ED32C8C1BE9302A0052D7C8 /* Project object */;
+}
