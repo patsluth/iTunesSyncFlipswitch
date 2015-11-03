@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cd /tmp/
-
-#clear the FlipswitchCache incase we changed our icon
-rm -R FlipswitchCache
-
-exit 0
