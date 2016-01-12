@@ -11,7 +11,11 @@ PACKAGE_VERSION = 1.0-6
 
 
 
-ARCHS = armv7 armv7s arm64
+ifeq ($(DEBUG), 1)
+    ARCHS = arm64
+else
+    ARCHS = armv7 armv7s arm64
+endif
 TARGET = iphone:clang:latest:7.0
 
 

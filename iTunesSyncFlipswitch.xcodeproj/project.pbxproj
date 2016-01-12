@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		2ED32C921BE930B70052D7C8 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
-		2ED32C931BE930B70052D7C8 /* final_release_debs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = final_release_debs; sourceTree = "<group>"; };
 		2ED32C941BE930B70052D7C8 /* layout */ = {isa = PBXFileReference; lastKnownFileType = folder; path = layout; sourceTree = "<group>"; };
 		2ED32C951BE930B70052D7C8 /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
-		2ED32C961BE930B70052D7C8 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		2ED32C981BE930B70052D7C8 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		2ED32C991BE930B70052D7C8 /* iTunesSyncSwitch.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = iTunesSyncSwitch.xm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -20,12 +17,9 @@
 		2ED32C8B1BE9302A0052D7C8 = {
 			isa = PBXGroup;
 			children = (
-				2ED32C921BE930B70052D7C8 /* Assets */,
-				2ED32C931BE930B70052D7C8 /* final_release_debs */,
 				2ED32C941BE930B70052D7C8 /* layout */,
-				2ED32C981BE930B70052D7C8 /* Makefile */,
 				2ED32C951BE930B70052D7C8 /* public */,
-				2ED32C961BE930B70052D7C8 /* Resources */,
+				2ED32C981BE930B70052D7C8 /* Makefile */,
 				2ED32C991BE930B70052D7C8 /* iTunesSyncSwitch.xm */,
 			);
 			sourceTree = "<group>";
